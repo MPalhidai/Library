@@ -15,38 +15,40 @@
         </button>
         <div class="collapse pb-5" id="collapseExample">
           <form>
-            <div class="row">
+            <div class="form-group row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="Title" required>
+                <input id="new-title" type="text" class="form-control" placeholder="Title" required>
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Author" required>
+                <input id="new-author" type="text" class="form-control" placeholder="Author" required>
               </div>
               <div class="col">
-                <input type="number" class="form-control" placeholder="Pages" required>
-              </div>
-            </div>
-            <div class="row justify-content-between pt-3">
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="radio1" id="radio1" value="option1" checked>
-                  <label class="form-check-label" for="exampleRadios1">
-                    I read this book
-                  </label>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="radio2" id="radio2" value="option2">
-                  <label class="form-check-label" for="exampleRadios2">
-                    I want to read this book
-                  </label>
-                </div>
-              </div>
-              <div class="col">
-                <button type="submit" class="btn btn-secondary">Add To Library</button>
+                <input  id="new-pages" type="number" class="form-control" placeholder="Pages" required>
               </div>
             </div>
+            <fieldset class="form-group">
+              <div class="row justify-content-between pt-3">
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="new-read" id="read" value="true" checked>
+                    <label class="form-check-label" for="read">
+                      I read this book
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="new-read" id="not-read" value="false">
+                    <label class="form-check-label" for="not-read">
+                      I want to read this book
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <input type="button" class="btn btn-secondary" onclick="addBookToLibrary()" value="Add To Library">
+                </div>
+              </div>
+            </fieldset>
           </form>
         </div>
 

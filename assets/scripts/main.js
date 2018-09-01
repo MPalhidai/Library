@@ -9,8 +9,21 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+// add book might need to add to table
+
 function addBookToLibrary() {
-  // do stuff here
+  let addTitle = document.getElementById("new-title").value;
+  let addAuthor = document.getElementById("new-author").value;
+  let addPages = document.getElementById("new-pages").value;
+  let radios = document.getElementsByName("new-read");
+
+  radios.forEach(function(radio) {
+    if (radio.checked) addRead = radio.value;
+  });
+
+  let newBook = new Book(addTitle,addAuthor,addPages,addRead);
+  myLibrary.push(newBook);
+  render(myLibrary);
 }
 
 function render(books) {
