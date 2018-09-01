@@ -5,7 +5,7 @@
 
 2. All of your book objects are going to be stored in a simple array, so add a function to the script (not the constructor) that can take user’s input and store the new book objects into an array. Your code should look something like this:
 
-`let myLibrary = []
+let myLibrary = []
 
 function Book() {
   // the constructor...
@@ -13,7 +13,7 @@ function Book() {
 
 function addBookToLibrary() {
   // do stuff here
-}`
+}
 
 3. Hook the array up to your HTML with a render() function that loops through the array and displays each book on the page. You can display them in some sort of table, or each on their own “card”. It might help for now to manually add a few books to your array so you can see the display.
 
