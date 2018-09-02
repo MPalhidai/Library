@@ -1,5 +1,5 @@
-let myFirstBook = new Book("One Fish Two Fish Red Fish Blue Fish","Dr. Seuss",66,true);
-let mySecondBook = new Book("Green Eggs and Ham","Dr. Seuss",72,true);
+let myFirstBook = new Book("One Fish Two Fish Red Fish Blue Fish","Dr. Seuss",66,"true");
+let mySecondBook = new Book("Green Eggs and Ham","Dr. Seuss",72,"false");
 let myLibrary = [myFirstBook, mySecondBook];
 let index = 0;
 
@@ -39,9 +39,8 @@ function render(books) {
 
     let indexColumn = document.createElement("TH");
     indexColumn.setAttribute("scope", "row");
-    indexColumn.innerHTML = index+1;
+    indexColumn.innerHTML = index + 1;
     row.appendChild(indexColumn);
-
 
     let titleColumn = row.insertCell(1);
     titleColumn.innerHTML = books[index].title;
@@ -49,8 +48,46 @@ function render(books) {
     authorColumn.innerHTML = books[index].author;
     let pagesColumn = row.insertCell(3);
     pagesColumn.innerHTML = books[index].pages;
+
     let readColumn = row.insertCell(4);
-    readColumn.innerHTML = books[index].read;
+    if (books[index].read == "false") {
+      let justReadBtn = document.createElement("BUTTON");
+      readColumn.appendChild(justReadBtn);
+      justReadBtn.setAttribute("class", "btn btn-outline-success");
+      justReadBtn.setAttribute("id", `${index}`);
+      justReadBtn.innerHTML = "Read";
+
+      justReadBtn.addEventListener("click", function() {
+        books[this.id].read = "true";
+        let tableRows = table.getElementsByTagName('tr');
+        while (index > 0) {
+          table.removeChild(tableRows[index-1]);
+          index--;
+        };
+        render(myLibrary);
+      });
+    } else {
+      readColumn.innerHTML = books[index].read;
+    }
+
+    let removeColumn = row.insertCell(5);
+    let removeBtn = document.createElement("BUTTON");
+    removeColumn.appendChild(removeBtn);
+    removeBtn.setAttribute("class", "btn btn-outline-danger");
+    removeBtn.setAttribute("id", `${index}`);
+    removeBtn.innerHTML = "Remove";
+    row.appendChild(removeColumn);
+
+    // re-render whole list when removing to update list indecies
+    removeBtn.addEventListener("click", function() {
+      myLibrary.splice(this.id, 1);
+      let tableRows = table.getElementsByTagName('tr');
+      while (index > 0) {
+        table.removeChild(tableRows[index-1]);
+        index--;
+      };
+      render(myLibrary);
+    });
 
     index++;
   }
